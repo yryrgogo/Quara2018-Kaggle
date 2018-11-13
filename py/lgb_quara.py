@@ -1,6 +1,6 @@
 win_path = f'../features/4_winner/*.gz'
 stack_name='add_nest'
-fname=''
+fname='quara'
 xray=False
 #  xray=True
 #========================================================================
@@ -134,7 +134,7 @@ else:
     test_ = utils.read_pkl_gzip('../py/test_tfidf.gz')
     from scipy.sparse import hstack, csr_matrix
     y = train[target]
-    prediction = np.array()
+    prediction = np.array([])
     train = hstack((csr_matrix(train.drop(['qid', target], axis=1)), train_))
     test = hstack((csr_matrix(test.drop(['qid', target], axis=1)), test_))
 
@@ -162,6 +162,11 @@ else:
         y_pred = lgb.predict(x_val)
         score = log_loss(y_val, y_pred)
         logger.info(f'Fold No: {n_fold} | {metric}: {score}')
+        logger.info(f"Train Shape: {x_train.shape}")
+        for thresh in np.arange(0.1, 0.301, 0.01):
+            thresh = np.round(thresh, 2)
+            f1 = f1_score(y_val, (y_pred>thresh).astype(int))
+            logger.info(f"F1 score at threshold {thresh} is {f1}")
 
         test_pred = lgb.predict(test)
 
@@ -170,9 +175,11 @@ else:
         else:
             prediction += test_pred
 
-        #  ' Feature Importance '
-        #  feim_name = f'{n_fold}_importance'
-        #  feim = self.df_feature_importance(feim_name=feim_name)
+        ' Feature Importance '
+        feim_name = f'{n_fold}_importance'
+        feim = pd.Series(lgb.feature_importance(), name=feim_name, index=lgb.feature_name())
+        feim.to_csv(f'../valid/{start_time[4:12]}_{model_type}_{fname}_f1{f1}_logloss{score}_lr{learning_rate}.csv', index=True)
+        sys.exit()
 
         #  if len(self.cv_feim) == 0:
         #      cv_feim = feim.copy()
@@ -184,11 +191,6 @@ else:
 #========================================================================
 # Result
 #========================================================================
-for thresh in np.arange(0.1, 0.301, 0.01):
-    thresh = np.round(thresh, 2)
-    f1 = f1_score(y_val, (y_pred>thresh).astype(int))
-    print(f"F1 score at threshold {thresh} is {f1}")
-sys.exit()
 
 cv_score = LGBM.cv_score
 result = LGBM.prediction
