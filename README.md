@@ -2,6 +2,10 @@
 kaggle competition Quara
 
 ## Try
+
+* Preprocessing
+https://github.com/MajorTal/DeepSpell
+
 * Mercari 18th LGBM + wordbatch + Naive Bayes
 discussion
 https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/50252
