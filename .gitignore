@@ -1,7 +1,31 @@
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
+input/
+output/
+valid/
+model/
+feim/
+
+*.yaml
+*.config
+*.csv
+*.fp
+*.p
+*.pickle
+*.pkl
+*.pyc
+*.tsv
+*.twb
+*.twbx
+*.xls
+*.xlsx
+*.ppt
+*.txt
+*.db
 
 # C extensions
 *.so
@@ -102,3 +126,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
