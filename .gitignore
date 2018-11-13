@@ -9,6 +9,7 @@ output/
 valid/
 model/
 feim/
+features/
 
 *.yaml
 *.config
@@ -26,6 +27,7 @@ feim/
 *.ppt
 *.txt
 *.db
+*.gz
 
 # C extensions
 *.so
