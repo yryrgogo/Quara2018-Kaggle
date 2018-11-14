@@ -8,19 +8,20 @@ https://github.com/MajorTal/DeepSpell
   
 ### Feature Engineering
 #### Basic Feature
-* N-gram
-* BoW  
-* TFIDF  
-* word_cnt  
-* unique_word_cnt  
-* char_cnt  
-* stopword_cnt  
-* punctuations_cnt  
-* upper_word_cnt  
-* word_title_cnt  
-* word_len_mean  
-* word_len_max  
-* word_len_min  
+* N-gram  
+word unigram/bigram/trigram  
+char bigram/trigram/four-gram  
+* ~~BoW  
+* ~~TFIDF  
+* ~~word_cnt  
+* ~~unique_word_cnt  
+* ~~char_cnt  
+* ~~stopword_cnt  
+* ~~punctuations_cnt  
+* ~~upper_word_cnt  
+* ~~word_title_cnt  
+* ~~word_len_mean  
+* ~~word_len_max  
 * Entity  
 * POS(part of speech) @NLTK/SpaCy  
 https://qiita.com/kei_0324/items/400f639b2f185b39a0cf  
