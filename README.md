@@ -7,8 +7,9 @@ kaggle competition Quara
 https://github.com/MajorTal/DeepSpell  
   
 ### Feature Engineering
+#### Basic Feature
+* BoW  
 * TFIDF  
-* LDA  
 * word_cnt  
 * unique_word_cnt  
 * char_cnt  
@@ -19,6 +20,29 @@ https://github.com/MajorTal/DeepSpell
 * word_len_mean  
 * word_len_max  
 * word_len_min  
+* Entity  
+* part of speech(NLTK/SpaCy)  
+  
+#### Target Encoding  
+* oof_ratio_sincere/oof_ratio_insincere  
+Out of Foldのデータセットにおけるその単語のsincere/insincereテキストに含まれていた割合  
+* oof_tfidf_sincere/oof_tfidf_insincere  
+Out of Foldのデータセットにおけるその単語のsincere/insincere内でのTFIDF  
+* oof_cos_similar_sincere/oof_cos_similar_sincere(euclid, some scipy.dist...)  
+Out of Foldのデータセットにおけるsincere/insincereとのcos similar avg  
+* oof_lda_sincere/oof_lda_sincere  
+Out of Foldのデータセットにおけるsincere/insincere別LDAでのtopic value  
+* oof_wordvector_sincere/oof_wordvector_sincere  
+Out of Foldのデータセットにおけるsincere/insincere別word vector similar/diff/ratio  
+
+#### Word Embedding  
+* LDA  
+* LSI  
+* sense2vec  
+* Inception  
+* Attention  
+* word vector avg/min/max/std  
+* word vector absolute avg/min/max/std  
 
 
 * Mercari 18th LGBM + wordbatch + Naive Bayes  
