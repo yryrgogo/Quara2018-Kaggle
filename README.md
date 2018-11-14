@@ -4,7 +4,22 @@ kaggle competition Quara
 ## Try
 
 * Preprocessing  
-https://github.com/MajorTal/DeepSpell
+https://github.com/MajorTal/DeepSpell  
+  
+### Feature Engineering
+* TFIDF  
+* LDA  
+* word_cnt  
+* unique_word_cnt  
+* char_cnt  
+* stopword_cnt  
+* punctuations_cnt  
+* upper_word_cnt  
+* word_title_cnt  
+* word_len_mean  
+* word_len_max  
+* word_len_min  
+
 
 * Mercari 18th LGBM + wordbatch + Naive Bayes  
 discussion  
