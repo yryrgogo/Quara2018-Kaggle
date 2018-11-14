@@ -13,6 +13,8 @@ word unigram/bigram/trigram
 char bigram/trigram/four-gram  
 * ~~BoW~~  
 * ~~TFIDF~~  
+* SVD  
+BoW/TFIDF(N-gram, below:, max_feature:50000/100000/200000/300000/400000/500000)  
 * ~~word_cnt~~  
 * ~~unique_word_cnt~~  
 * ~~char_cnt~~  
@@ -68,6 +70,9 @@ https://www.pytry3g.com/entry/text-classification-SCDV
 #### Ensemble  
 * oof_top50_similar_psuedo_label  
 CVでlossの最も小さいTOP50のsincere/insincereのテキストとのsimilar(cos/wordvector)  
+* Ridge  
+* Wordbatch  
+* FFM  
 
   
 #### Other
