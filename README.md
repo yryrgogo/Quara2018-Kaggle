@@ -8,6 +8,7 @@ https://github.com/MajorTal/DeepSpell
   
 ### Feature Engineering
 #### Basic Feature
+* N-gram
 * BoW  
 * TFIDF  
 * word_cnt  
@@ -45,6 +46,11 @@ Out of Foldのデータセットにおけるsincere/insincere別word vector simi
 * word vector absolute avg/min/max/std  
 
 
+#### NN
+* 自動要約seq2seqの重要seq抽出部分のコードを読みたい  
+https://techblog.exawizards.com/entry/2018/08/23/121437  
+
+
 * Mercari 18th LGBM + wordbatch + Naive Bayes  
 discussion  
 https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/50252  
@@ -78,5 +84,5 @@ https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/50499
 
 ## Not Try
 
-* Bert  
+* BERT   
 https://www.kaggle.com/sergeykalutsky/introducing-bert-with-tensorflow/notebook  
