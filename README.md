@@ -22,8 +22,17 @@ https://github.com/MajorTal/DeepSpell
 * word_len_max  
 * word_len_min  
 * Entity  
-* part of speech(NLTK/SpaCy)  
-  
+* POS(part of speech) @NLTK/SpaCy  
+https://qiita.com/kei_0324/items/400f639b2f185b39a0cf  
+
+
+#### Advanced Feature
+* WordNet  
+https://gist.github.com/XericZephyr/462043957ee2a23ace73  
+* NER-based feature  
+https://toshipedia.jp/201803073553/
+
+
 #### Target Encoding  
 * oof_ratio_sincere/oof_ratio_insincere  
 Out of Foldのデータセットにおけるその単語のsincere/insincereテキストに含まれていた割合  
@@ -49,7 +58,16 @@ Out of Foldのデータセットにおけるsincere/insincere別word vector simi
 #### NN
 * 自動要約seq2seqの重要seq抽出部分のコードを読みたい  
 https://techblog.exawizards.com/entry/2018/08/23/121437  
+* SCDV  
+https://qiita.com/fufufukakaka/items/a7316273908a7c400868  
+https://www.pytry3g.com/entry/text-classification-SCDV  
+* Word mover distance  
 
+
+#### Other
+* TF-IDF/word2vec/seq2seq...combine dataset solution  
+http://datanerd.hateblo.jp/entry/2018/06/30/170121  
+https://github.com/Cisco-Talos/fnc-1/tree/master/tree_model  
 
 * Mercari 18th LGBM + wordbatch + Naive Bayes  
 discussion  
