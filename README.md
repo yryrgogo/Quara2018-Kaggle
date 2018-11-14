@@ -3,10 +3,10 @@ kaggle competition Quara
 
 ## Try
 
-* Preprocessing
+* Preprocessing  
 https://github.com/MajorTal/DeepSpell
 
-* Mercari 18th LGBM + wordbatch + Naive Bayes
+* Mercari 18th LGBM + wordbatch + Naive Bayes  
 discussion  
 https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/50252  
 kernel  
@@ -14,7 +14,7 @@ https://www.kaggle.com/peterhurford/lgb-and-fm-18th-place-0-40604
 Multinomial naive Bayes  
 https://qiita.com/fujin/items/bd58fc7a93dc6e001045  
 
-* wordbatch
+* wordbatch  
 creater  
 https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/47295  
 kernel  
@@ -26,13 +26,13 @@ qiita
 https://qiita.com/sh-tatsuno/items/0b0fbc15c03f3d54df90  
 https://github.com/sh-tatsuno/WordBatch_Example/blob/master/WordBatch_Example.ipynb  
 
-* Sentiment Analysis
+* Sentiment Analysis  
 qiita  
 https://qiita.com/yukinoi/items/c3c4e4e24a66b88d8215  
 
 ## Other Kaggle Competitoin
 
-* Mercari
+* Mercari  
 2nd  
 some model Ensemble. sprase NN.  
 https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/50499  
