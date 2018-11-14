@@ -65,6 +65,11 @@ https://www.pytry3g.com/entry/text-classification-SCDV
 * Word mover distance  
 
 
+#### Ensemble  
+* oof_top50_similar_psuedo_label  
+CVでlossの最も小さいTOP50のsincere/insincereのテキストとのsimilar(cos/wordvector)  
+
+  
 #### Other
 * TF-IDF/word2vec/seq2seq...combine dataset solution  
 http://datanerd.hateblo.jp/entry/2018/06/30/170121  
