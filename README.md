@@ -65,6 +65,8 @@ Out of Foldのデータセットにおけるsincere/insincere別word vector simi
 * word vector absolute avg/min/max/std  
 * entity-embedding-rossmann  
 https://github.com/entron/entity-embedding-rossmann  
+* preprocessing for embedding (stemming, stopword...is not best for embedding)
+https://www.kaggle.com/christofhenkel/how-to-preprocessing-when-using-embeddings/notebook  
 
 
 #### NN
@@ -74,6 +76,8 @@ https://techblog.exawizards.com/entry/2018/08/23/121437
 https://qiita.com/fufufukakaka/items/a7316273908a7c400868  
 https://www.pytry3g.com/entry/text-classification-SCDV  
 * Word mover distance  
+* About Overfitting/Underfitting  
+https://www.kaggle.com/ratthachat/handle-overfitting-error-analysis-of-glove-gru/notebook  
 
 
 #### Ensemble  
