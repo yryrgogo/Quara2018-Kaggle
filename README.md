@@ -1,6 +1,11 @@
 # quara
 kaggle competition Quara
 
+## EDA  
+
+### Get Data Process  
+Quaraはどんなデータを準備したと考えることができるか？  
+  
 ## Try
 
 * Preprocessing  
@@ -21,10 +26,13 @@ BoW/TFIDF(N-gram, below:, max_feature:50000/100000/200000/300000/400000/500000)
 * ~~stopword_cnt~~  
 * ~~punctuations_cnt~~  
 * ~~upper_word_cnt~~  
-* ~~word_title_cnt~~  
+* ~~word_title_cnt~~
+* sentence_cnt
 * ~~word_len_mean~~  
 * ~~word_len_max~~  
 * Entity  
+spacy  
+https://www.kaggle.com/hubert0527/spacy-name-entity-recognition  
 * POS(part of speech) @NLTK/SpaCy  
 https://qiita.com/kei_0324/items/400f639b2f185b39a0cf  
 
@@ -33,8 +41,7 @@ https://qiita.com/kei_0324/items/400f639b2f185b39a0cf
 * WordNet  
 https://gist.github.com/XericZephyr/462043957ee2a23ace73  
 * NER-based feature  
-https://toshipedia.jp/201803073553/
-
+https://toshipedia.jp/201803073553/  
 
 #### Target Encoding  
 * oof_ratio_sincere/oof_ratio_insincere  
@@ -56,6 +63,8 @@ Out of Foldのデータセットにおけるsincere/insincere別word vector simi
 * Attention  
 * word vector avg/min/max/std  
 * word vector absolute avg/min/max/std  
+* entity-embedding-rossmann  
+https://github.com/entron/entity-embedding-rossmann  
 
 
 #### NN
@@ -73,6 +82,8 @@ CVでlossの最も小さいTOP50のsincere/insincereのテキストとのsimilar
 * Ridge  
 * Wordbatch  
 * FFM  
+* Naive Bayes  
+https://www.kaggle.com/jpmiller/drunk-anteaters-logistic-regression  
 
   
 #### Other
