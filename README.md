@@ -30,18 +30,18 @@ BoW/TFIDF(N-gram, below:, max_feature:50000/100000/200000/300000/400000/500000)
 * sentence_cnt
 * ~~word_len_mean~~  
 * ~~word_len_max~~  
-* Entity  
-spacy  
-https://www.kaggle.com/hubert0527/spacy-name-entity-recognition  
-* POS(part of speech) @NLTK/SpaCy  
-https://qiita.com/kei_0324/items/400f639b2f185b39a0cf  
 
 
 #### Advanced Feature
 * WordNet  
-https://gist.github.com/XericZephyr/462043957ee2a23ace73  
+lemma  
+similarity  
+* spacy  
+entity  
+pos(part of speech)  
 * NER-based feature  
 https://toshipedia.jp/201803073553/  
+
 
 #### Target Encoding  
 * oof_ratio_sincere/oof_ratio_insincere  
