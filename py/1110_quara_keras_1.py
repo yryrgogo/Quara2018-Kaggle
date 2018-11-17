@@ -1,8 +1,9 @@
 
 # coding: utf-8
-
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+sys.exit()
 # In[1]:
-
 
 # -*- coding: utf-8 -*-
 import numpy as np
@@ -49,37 +50,39 @@ from keras import initializers, regularizers, constraints, optimizers, layers
 # In[3]:
 
 
-train = utils.read_pkl_gzip(path='../input/1116_train_wordnet_lemma_dict.gz')
-train_df = utils.read_df_pkl('../input/train*.p')[['qid', 'target']]
-print(train_df.set_index('qid').head())
+#  train = utils.read_pkl_gzip(path='../input/1116_train_wordnet_lemma_dict.gz')
+#  train_df = utils.read_df_pkl('../input/train*.p')[['qid', 'target']]
+#  print(train_df.set_index('qid').head())
 
 
-# In[4]:
-
-
-get_ipython().run_line_magic('time', '')
 seed = 1208
-tmp = train.copy()
+#  tmp = train.copy()
 
-# for uid, value in tmp.items():
-def pararell_val_join(args):
-    uid = args[0]
-    value = args[1]
-    df_dict = {}
-    np.random.seed(seed)
-    val_len = int(len(value)*0.5)
-    try:
-        value = np.random.choice(a=value, size=val_len)
-    except ValueError:
-        pass
-    df_dict[uid] = " ".join(value)
-    return df_dict
-tmp_dict = {}
-p_list = pararell_process(pararell_val_join, tmp.items())
-[tmp_dict.update(p) for p in p_list]
-tmp_train = pd.Series(tmp_dict).to_frame()
-tmp_train = tmp_train.join(train_df.set_index('qid'))
-tmp_train.rename(columns={0:qt}, inplace=True)
+#  # for uid, value in tmp.items():
+#  def pararell_val_join(args):
+#      uid = args[0]
+#      value = args[1]
+#      df_dict = {}
+#      np.random.seed(seed)
+#      val_len = int(len(value)*0.5)
+#      try:
+#          value = np.random.choice(a=value, size=val_len)
+#      except ValueError:
+#          pass
+#      df_dict[uid] = " ".join(value)
+#      return df_dict
+#  tmp_dict = {}
+#  p_list = pararell_process(pararell_val_join, tmp.items())
+#  [tmp_dict.update(p) for p in p_list]
+#  tmp_train = pd.Series(tmp_dict).to_frame()
+#  tmp_train = tmp_train.join(train_df.set_index('qid'))
+#  tmp_train.rename(columns={0:qt}, inplace=True)
+
+#  utils.to_df_pkl(df=tmp_train, path='../input/', fname='wn_bagging_train')
+#  sys.exit()
+
+tmp_train = utils.read_df_pkl(path='../input/wn_bagging_train*.p')
+tmp_train = tmp_train.head(50000)
 
 ## split to train and val
 train_df, val_df = train_test_split(tmp_train, test_size=0.2, random_state=seed)
@@ -111,9 +114,20 @@ train_y = train_df['target'].values
 val_y = val_df['target'].values
 
 
+### add for TensorBoard
+import keras.callbacks
+import keras.backend.tensorflow_backend as KTF
+import tensorflow as tf
+
+old_session = KTF.get_session()
+
+session = tf.Session('')
+KTF.set_session(session)
+KTF.set_learning_phase(1)
+### 
+
+
 # In[5]:
-
-
 inp = Input(shape=(maxlen,))
 x = Embedding(max_features, embed_size)(inp)
 # x = Bidirectional(CuDNNGRU(64, return_sequences=True))(x)
@@ -128,11 +142,10 @@ model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy']
 print(model.summary())
 
 
-# In[16]:
-
-
-from tensorflow.python.client import device_lib
-device_lib.list_local_devices()
+### add for TensorBoard
+tb_cb = keras.callbacks.TensorBoard(log_dir="../tflog/", histogram_freq=1)
+cbks = [tb_cb]
+###
 
 
 # In[6]:
@@ -143,7 +156,9 @@ model.fit(train_X, train_y, batch_size=512, epochs=2,
           validation_data=(val_X, val_y))
 
 
-# In[ ]:
+### add for TensorBoard
+KTF.set_session(old_session)
+###
 
 
 pred_noemb_val_y = model.predict([val_X], batch_size=1024, verbose=1)

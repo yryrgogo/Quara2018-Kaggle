@@ -8,13 +8,13 @@ brown_ic = wordnet_ic.ic('ic-brown.dat')
 semcor_ic = wordnet_ic.ic('ic-semcor.dat')
 
 
-sample=True
-sample=False
+is_sample=True
+is_sample=False
 
 #========================================================================
 # Similarity Value
 #========================================================================
-if sample:
+if is_sample:
     dog = wn.synsets('dog')[0]
     cat = wn.synsets('cat')[0]
     # 単語間の最短グラフ距離？数字は直感的でない
