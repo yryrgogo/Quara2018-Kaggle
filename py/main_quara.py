@@ -1,3 +1,5 @@
+is_pickle = False
+is_base = False
 import sys
 import os
 HOME = os.path.expanduser('~')
@@ -9,21 +11,24 @@ from wordcloud import STOPWORDS
 
 
 def quara_load_data():
-    # to pickle
-    #  train = pd.read_csv('../input/train.csv')
-    #  test = pd.read_csv('../input/test.csv')
-    #  utils.to_df_pkl(path='../input/', fname='train', df=train)
-    #  utils.to_df_pkl(path='../input/', fname='test', df=test)
-
     # read pickle
     train = utils.read_df_pkl(path='../input/train*.p')
     test = utils.read_df_pkl(path='../input/test*.p')
     return train, test
-#  Make Base
-#  train, test = quara_load_data()
-#  df = pd.concat([train, test], axis=0)
-#  utils.to_pkl_gzip(obj=df[['qid', 'target']], path='../input/base')
-#  sys.exit()
+
+
+if is_pickle:
+    train = pd.read_csv('../input/train.csv')
+    test = pd.read_csv('../input/test.csv')
+    utils.to_df_pkl(path='../input/', fname='train', df=train)
+    utils.to_df_pkl(path='../input/', fname='test', df=test)
+
+if is_base:
+    train, test = quara_load_data()
+    df = pd.concat([train, test], axis=0)
+    utils.to_pkl_gzip(obj=df[['qid', 'target']], path='../input/base')
+    sys.exit()
+
 
 def cleansing_text(text, remove_stopwords=True, stem_words=False):
 
