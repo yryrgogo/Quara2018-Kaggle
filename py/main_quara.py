@@ -33,12 +33,14 @@ if is_base:
 def cleansing_text(text, remove_stopwords=True, stem_words=False):
 
     # Convert words to lower case and split them
+    text = re.sub("_", " ", text, flags=re.IGNORECASE)
     text = text.lower().split()
+    regex_num = re.compile(u"[0-9０-９]")
 
     # Optionally, remove stop words
     if remove_stopwords:
         stops = STOPWORDS
-        text = [w for w in text if not w in stops]
+        text = [w for w in text if (not w in stops) and not(regex_num.match(w))]
 
     text = " ".join(text)
 
