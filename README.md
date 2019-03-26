@@ -1,10 +1,6 @@
-# quara
-kaggle competition Quara
-
-## EDA  
-
-### Get Data Process  
-Quaraはどんなデータを準備したと考えることができるか？  
+# Quara
+kaggle competition Quara.
+途中でEloが来たので結局やらなかった。
   
 ## Try
 
@@ -130,3 +126,111 @@ https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/50499
 
 * BERT   
 https://www.kaggle.com/sergeykalutsky/introducing-bert-with-tensorflow/notebook  
+
+
+## 雑メモ
+### Feature Engineering
+Levenshtein distance 
+Fixed misspellings by finding word vector neighborhoods. Fasttext tool can create vectors for out-of-dictionary words which is really nice. 
+Text Normalization. 表記揺れの是正と似通った単語の統一、数字の置き換え, Fixed some miss spellings
+Vowpal Wabbit model
+Quara 2017 1st place solution
+Not Try
+Classical text mining features
+
+Similarity measures on LDA and LSI embeddings.
+Similarity measures on bag of character n-grams ( TFIDF reweighted or not) from 1 to 8 grams.
+Abhishek's and owl’s kindly shared features.
+Edit and sequence matching distances, percentage of common tokens up to 1, 2, …, 6 when question ends the same, or starts the same
+Length of questions, diff of length
+Number of capital letters, question marks etc…
+Indicators for Question 1/2 starting with "Are", "Can", "How" etc… and all mathematical engineering corresponding
+We also used stanford corenlp to tokenizer, postagger and ner to preprocessing text input for some deep learning models.
+
+Structural features (i.e. from graph)
+
+We built density features from the graph built from the edges between pairs of questions inside train and test datasets concatenated. We had counts of neighbors of question 1, question 2, the min, the max, intersections, unions, shortest path length when main edge cut….
+We went further and built density features to count the neighbors of the questions neighbors… and questions neighbors neighbors .. (inception). We also counted neighbors of higher order which also were neighbors of lower order (loops).
+We tried different graph structures : we built undirected and directed graphs (edges directed from question 1 to question 2), we also tried to separate the density features of question 1 from the features of question 2 to generate non commutative features in addition to commutative ones.
+We built features describing the connex subgraph the pair belonged to : Number of edges, number of nodes, % of edge in train
+We also computed the same features on sub graphs built only from the edges of questions which both appear more than once. What we wanted was to remove fake questions which we thought were damaging the graph features by changing its structure.
+Finally as other teams, we weighted our graphs with some of our initial models. We tried logit and rescaled prediction but raw prediction worked best. We also weighted the graphs with one of our similarity features.
+Reference Discussion
+2018 Quara
+CPMP F1 Optimization https://www.kaggle.com/cpmpml/f1-score-expectation-maximization-in-o-n/code
+Augument Text https://www.kaggle.com/c/quora-insincere-questions-classification/discussion/71083
+SOTA https://www.kaggle.com/c/quora-insincere-questions-classification/discussion/70821
+2018 Toxic Discussion
+https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion
+
+Winner's
+1st place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52557
+2nd place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52612
+3rd place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52762
+3rd place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52692
+3rd place solution(single model) https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52644
+5th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52630
+11th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52526
+12th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52702
+15th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52563
+25th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52647
+27th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52719
+33rd place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52666
+34th place solution https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52645
+place solution
+Others
+LR words and char n-grams https://www.kaggle.com/tunguz/logistic-regression-with-words-and-char-n-grams/code
+For Beginners Keras https://www.kaggle.com/sbongo/for-beginners-tackling-toxic-using-keras/notebook 
+LSTM baseline https://www.kaggle.com/jhoward/improved-lstm-baseline-glove-dropout/comments
+NB-SVM strong linear baseline https://www.kaggle.com/jhoward/nb-svm-strong-linear-baseline/comments
+keras LSTM attention globe840b https://www.kaggle.com/qqgeogor/keras-lstm-attention-glove840b-lb-0-043/code
+You should use out-of-fold data https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/52224
+adversarial_validation https://www.kaggle.com/ogrellier/adversarial-validation-and-lb-shakeup/notebook
+spell checker using word embeddings(Quara) https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/discussion/51426
+2017 Quara Discussion
+https://www.kaggle.com/c/quora-question-pairs/discussion
+
+1st place solution by @Maximilien@DAMI
+2nd place solution (overview) by @Silogram
+3rd place solution (overview) by @Jared Turkewitz
+4th place solution (overview) by @HouJP
+5th place solution (summary) by @Faron
+7th place solution (overview) by @aphex34
+8th place solution (summary and Github) by @qianqian
+12th place solution (overview) by @CPMP
+14th place solution (Github) by @Wojtek Rosinski
+24th place solution (Github) by @AhmetErdem
+28th place solution https://www.kaggle.com/c/quora-question-pairs/discussion/34560
+33th place solution https://www.kaggle.com/c/quora-question-pairs/discussion/34292
+34th place solution by @Wong Ching Kit
+43rd place solution (kernel) by @Alex
+85th place solution (Github) by @stys
+169th place solution (Github) by @Daft Vader
+291st place solution (Github) by @Charles Jansen
+tkmさんのmagic feature (networkx) https://www.kaggle.com/tkm2261/my-magic-feature/notebook
+CPMP spell checker https://www.kaggle.com/cpmpml/spell-checker-using-word2vec/notebook
+CPMP Good or Bad? https://www.kaggle.com/c/quora-question-pairs/discussion/33801
+LSTM with Glove https://www.kaggle.com/lystdo/lb-0-18-lstm-with-glove-and-magic-features
+feature_engineering.py & DNN.py https://github.com/abhishekkrthakur/is_that_a_duplicate_quora_question/blob/master/feature_engineering.py
+https://www.kaggle.com/c/quora-question-pairs/discussion/31284
+benchmark https://www.kaggle.com/c/quora-question-pairs/discussion/31019
+external interesting solution https://www.kaggle.com/c/quora-question-pairs/discussion/30260
+Jackさん Ensemble https://www.kaggle.com/c/quora-question-pairs/discussion/34267
+funny feature https://www.kaggle.com/c/quora-question-pairs/discussion/34335
+Graph Feature https://www.kaggle.com/c/quora-question-pairs/discussion/34295
+LSTM with word2vec https://www.kaggle.com/lystdo/lstm-with-word2vec-embeddings
+可視化系
+Temporal pattern in train response rates?
+https://www.kaggle.com/ashhafez/temporal-pattern-in-train-response-rates/notebook
+
+
+
+### その他
+- メルカリ eli5 使えそう？ https://www.kaggle.com/lopuhin/eli5-for-mercari
+- mercari 4th place solution(NN. Code is too long.) https://www.kaggle.com/c/mercari-price-suggestion-challenge/discussion/49678
+LSTM Stackingがなぜうまくいかないか？
+- Explanations about why stacking LSTMs often leads to worse LB and one question about Stacking procedures
+https://www.kaggle.com/c/quora-question-pairs/discussion/34294
+- Jackさん Modeling Flow
+- グラフ理論　クリーク構造
+
